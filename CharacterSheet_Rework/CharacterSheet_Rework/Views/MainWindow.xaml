@@ -1,0 +1,424 @@
+﻿<Window x:Class="CharacterSheet_Rework.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CharacterSheet_Rework"
+        mc:Ignorable="d"
+                Title="Character Sheet" Height="720" Width="1280" MinHeight="670" MinWidth="1270">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Name="GrdAttributes" Grid.Row="1" Grid.Column="0" Grid.RowSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Name="STR">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="STR" FontSize="16" TextAlignment="Center"/>
+                <TextBlock Text="{Binding StrengthMod}" FontSize="26" Grid.Row="1" TextAlignment="Center"/>
+                <CheckBox IsChecked="{Binding ProfStrength}" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Margin="5"/>
+                <TextBox Text="{Binding Strength, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center" Width="40"/>
+            </Grid>
+
+            <Grid Name="DEX"  Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="DEX" FontSize="16" TextAlignment="Center"/>
+                <TextBlock Text="{Binding DexterityMod}" FontSize="26" Grid.Row="1" TextAlignment="Center"/>
+                <CheckBox IsChecked="{Binding ProfDexterity}" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Margin="5"/>
+                <TextBox  Text="{Binding Dexterity, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center" Width="40"/>
+            </Grid>
+
+            <Grid Name="CON"  Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="CON" FontSize="16" TextAlignment="Center"/>
+                <TextBlock Text="{Binding ConstitutionMod}" FontSize="26" Grid.Row="1" TextAlignment="Center"/>
+                <CheckBox IsChecked="{Binding ProfConstitution}" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Margin="5"/>
+                <TextBox  Text="{Binding Constitution, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center" Width="40"/>
+            </Grid>
+
+            <Grid Name="INT"  Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="INT" FontSize="16" TextAlignment="Center"/>
+                <TextBlock Text="{Binding IntelligenceMod}" FontSize="26" Grid.Row="1" TextAlignment="Center"/>
+                <CheckBox IsChecked="{Binding ProfIntelligence}" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Margin="5"/>
+                <TextBox  Text="{Binding Intelligence, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center" Width="40"/>
+            </Grid>
+
+            <Grid Name="WIS"  Grid.Row="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="WIS" FontSize="16" TextAlignment="Center"/>
+                <TextBlock Text="{Binding WisdomMod}" FontSize="26" Grid.Row="1" TextAlignment="Center"/>
+                <CheckBox IsChecked="{Binding ProfWisdom}" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Margin="5"/>
+                <TextBox  Text="{Binding Wisdom, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center" Width="40"/>
+            </Grid>
+
+            <Grid Name="CHA"  Grid.Row="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="CHA" FontSize="16" TextAlignment="Center"/>
+                <TextBlock Text="{Binding CharismaMod}" FontSize="26" Grid.Row="1" TextAlignment="Center"/>
+                <CheckBox IsChecked="{Binding ProfCharisma}" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Margin="5"/>
+                <TextBox  Text="{Binding Charisma, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center" Width="40"/>
+            </Grid>
+        </Grid>
+        <StackPanel  Grid.Row="1" Grid.Column="1" Grid.RowSpan="3">
+            <StackPanel Orientation="Horizontal" Name="Acrobatics"  >
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfAcrobatics}"/>
+                <TextBlock Text="Acrobatics" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding Acrobatics}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="Animal_Handling">
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfAnimal_Handling}"/>
+                <TextBlock Text="Animal_Handling" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding Animal_Handling}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="Arcana">
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfArcana}"/>
+                <TextBlock Text="Arcana" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding Arcana}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="Athletics">
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfAthletics}"/>
+                <TextBlock Text="Athletics" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding Athletics}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="Deception">
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfDeception}"/>
+                <TextBlock Text="Deception" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding Deception}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Name="History">
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfHistory}"/>
+                <TextBlock Text="History" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding History}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="Insight">
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfInsight}"/>
+                <TextBlock Text="Insight" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding Insight}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="Intimidation">
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfIntimidation}"/>
+                <TextBlock Text="Intimidation" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding Intimidation}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="Investigation">
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfInvestigation}"/>
+                <TextBlock Text="Investigation" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding Investigation}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="Medicine">
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfMedicine}"/>
+                <TextBlock Text="Medicine" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding Medicine}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="Nature">
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfNature}"/>
+                <TextBlock Text="Nature" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding Nature}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="Perception">
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfPerception}"/>
+                <TextBlock Text="Perception" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding Perception}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="Performance">
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfPerformance}"/>
+                <TextBlock Text="Performance" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding Performance}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="Persuasion">
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfPersuasion}"/>
+                <TextBlock Text="Persuasion" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding Persuasion}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="Religion">
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfReligion}"/>
+                <TextBlock Text="Religion" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding Religion}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="Sleight_of_Hand">
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfSleight_of_Hand}"/>
+                <TextBlock Text="Sleight_of_Hand" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding Sleight_of_Hand}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="Stealth">
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfStealth}"/>
+                <TextBlock Text="Stealth" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding Stealth}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="Survival">
+                <CheckBox VerticalAlignment="Center" Margin="10" IsChecked="{Binding ProfSurvival}"/>
+                <TextBlock Text="Survival" TextAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="{Binding Survival}" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+            </StackPanel>
+        </StackPanel>
+
+        <TextBlock Text="Proficiency Bonus" Margin="40,10,10,10" Grid.Column="1" TextAlignment="Center" FontSize="20"/>
+        <TextBox Text="{Binding Proficiency, UpdateSourceTrigger=PropertyChanged}" Margin="10,10,40,10" HorizontalAlignment="Left" Grid.Column="1" TextAlignment="Center" FontSize="20" Width="40"/>
+
+        <Grid Name="CharacterName" Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            <TextBox Text="{Binding Name}" Grid.Row="0" TextAlignment="Center" FontSize="24"/>
+            <TextBlock Text="CHARACTER NAME" Grid.Row="1" TextAlignment="Center" FontSize="14"/>
+        </Grid>
+
+        <Grid Name="PlayerName" Grid.Column="4">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            <TextBox Text="{Binding Playername}" Grid.Row="0" TextAlignment="Center" FontSize="24"/>
+            <TextBlock Text="PLAYER NAME" Grid.Row="1" TextAlignment="Center" FontSize="14"/>
+        </Grid>
+
+        <Grid Name="SaveLoadButtons" Grid.Column="5" Margin="40,5,40,5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Content="Save Character" Grid.Row="0" Click="SaveCharacter"/>
+            <Button Content="Load Character" Grid.Row="1" Click="LoadCharacter"/>
+        </Grid>
+
+        <Grid Name="CombatStats" Grid.Row="1" Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox Text="{Binding ArmorClass}" FontSize="20" TextAlignment="Center" Margin="10"/>
+            <TextBlock Text="AC" Grid.Row="1" TextAlignment="Center" FontSize="16"/>
+            <Border BorderBrush="Black" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" BorderThickness="1" Margin="-0.5"/>
+
+            <TextBox Text="{Binding Initiative}" FontSize="20" TextAlignment="Center" Margin="10" Grid.Column="1"/>
+            <TextBlock Text="INITIATIVE" Grid.Row="1" Grid.Column="1" TextAlignment="Center" FontSize="16"/>
+            <Border BorderBrush="Black" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" BorderThickness="1" Margin="-0.5"/>
+
+            <TextBox Text="{Binding Speed}" FontSize="20" TextAlignment="Center" Margin="10" Grid.Column="2"/>
+            <TextBlock Text="SPEED" Grid.Row="1" Grid.Column="2" TextAlignment="Center" FontSize="16"/>
+            <Border BorderBrush="Black" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" BorderThickness="1" Margin="-0.5"/>
+
+            <TextBox Text="{Binding MaxHitPoints}" FontSize="20" TextAlignment="Center" Margin="10" Grid.Row="2" Grid.ColumnSpan="2"/>
+            <TextBlock Text="MAX HITPOINTS" Grid.Row="3" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="18"/>
+            <Border BorderBrush="Black" Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" BorderThickness="1" Margin="-0.5"/>
+
+            <TextBox Text="{Binding HitDice}" FontSize="20" TextAlignment="Center" Margin="10" Grid.Row="2" Grid.Column="2"/>
+            <TextBlock Text="HITDICE" Grid.Row="3" Grid.Column="2" TextAlignment="Center" FontSize="18"/>
+            <Border BorderBrush="Black" Grid.Row="2" Grid.Column="2" Grid.RowSpan="2" BorderThickness="1" Margin="-0.5"/>
+
+            <TextBox Text="{Binding CurrentHitPoints}" FontSize="20" TextAlignment="Center" Margin="10" Grid.Row="4" Grid.ColumnSpan="2"/>
+            <TextBlock Text="HITPOINTS" Grid.Row="5" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="18"/>
+            <Border BorderBrush="Black" Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" BorderThickness="1" Margin="-0.5"/>
+
+            <TextBox Text="{Binding TemporaryHitPoints}" FontSize="20" TextAlignment="Center" Margin="10" Grid.Row="4" Grid.Column="2"/>
+            <TextBlock Text="TEMP" Grid.Row="5" Grid.Column="2" TextAlignment="Center" FontSize="18"/>
+            <Border BorderBrush="Black" Grid.Row="4" Grid.Column="2" Grid.RowSpan="2" BorderThickness="1" Margin="-0.5"/>
+        </Grid>
+
+        <Grid Name="CharacterInfo" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+
+            <TextBox Text="{Binding Class}" Grid.Row="0" TextAlignment="Center" FontSize="24" Margin="5"/>
+            <TextBlock Text="CLASS/LEVEL" Grid.Row="1" TextAlignment="Center" FontSize="14"/>
+            <Border BorderBrush="Black" Grid.Row="0" Grid.RowSpan="2" BorderThickness="1" Margin="-0.5"/>
+            <TextBox Text="{Binding Race}" Grid.Row="2" TextAlignment="Center" FontSize="24" Margin="5"/>
+            <TextBlock Text="RACE" Grid.Row="3" TextAlignment="Center" FontSize="14"/>
+            <Border BorderBrush="Black" Grid.Row="2" Grid.RowSpan="2" BorderThickness="1" Margin="-0.5"/>
+            <TextBox Text="{Binding Background}" Grid.Row="4" TextAlignment="Center" FontSize="24" Margin="5"/>
+            <TextBlock Text="BACKGROUND" Grid.Row="5" TextAlignment="Center" FontSize="14"/>
+            <Border BorderBrush="Black" Grid.Row="4" Grid.RowSpan="2" BorderThickness="1" Margin="-0.5"/>
+            <TextBox Text="{Binding ExperiencePoints}" Grid.Row="6" TextAlignment="Center" FontSize="24" Margin="5"/>
+            <TextBlock Text="EXPERIENCE POINTS" Grid.Row="7" TextAlignment="Center" FontSize="14"/>
+            <Border BorderBrush="Black" Grid.Row="6" Grid.RowSpan="2" BorderThickness="1" Margin="-0.5"/>
+            <TextBox Text="{Binding Alignment}" Grid.Row="8" TextAlignment="Center" FontSize="24" Margin="5"/>
+            <TextBlock Text="ALIGNMENT" Grid.Row="9" TextAlignment="Center" FontSize="14"/>
+            <Border BorderBrush="Black" Grid.Row="8" Grid.RowSpan="2" BorderThickness="1" Margin="-0.5"/>
+            <TextBlock Text="Proficiencies" Grid.Row="11" TextAlignment="Center" FontSize="18"/>
+        </Grid>
+
+        <Grid Name="DeathSaves" Grid.Row="2" Grid.Column="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="DEATH SAVES" Grid.ColumnSpan="6" FontSize="18" TextAlignment="Center" Margin="5"/>
+            <TextBlock Text="Success" Grid.Row="1" Grid.ColumnSpan="3" FontSize="18" TextAlignment="Center" Margin="5"/>
+            <TextBlock Text="Fail" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" FontSize="18" TextAlignment="Center" Margin="5"/>
+            <CheckBox IsChecked="{Binding DeathSaveSuccess0}" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <CheckBox IsChecked="{Binding DeathSaveSuccess1}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <CheckBox IsChecked="{Binding DeathSaveSuccess2}" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <CheckBox IsChecked="{Binding DeathSaveFail0}" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <CheckBox IsChecked="{Binding DeathSaveFail1}" Grid.Row="2" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <CheckBox IsChecked="{Binding DeathSaveFail2}" Grid.Row="2" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Border BorderBrush="Black" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="6" BorderThickness="1" Margin="-0.5"/>
+        </Grid>
+
+        <Grid Name="Proficiencies" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ListView ItemsSource="{Binding ArmorProf}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Armor"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <ListView ItemsSource="{Binding WeaponProf}" Grid.Column="1">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Weapons"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <ListView ItemsSource="{Binding ToolProf}" Grid.Column="2">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Tools"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <ListView ItemsSource="{Binding LanguageProf}" Grid.Column="3">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Languages"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <!--<TextBlock Text="Armor:" Grid.Row="0" Grid.Column="0" TextAlignment="Right" Margin="5" FontWeight="Bold"/>
+               <TextBlock x:Name="TBArmorProficiencies" Text="ArmorProficiencies" Grid.Row="0" Grid.Column="1" Margin="5"/>
+            <Border BorderBrush="Black" Grid.Row="0" Grid.ColumnSpan="2" BorderThickness="1" Margin="-0.5"/>
+
+            <TextBlock Text="Weapons:" Grid.Row="1" Grid.Column="0" TextAlignment="Right" Margin="5" FontWeight="Bold"/>
+            <TextBlock x:Name="TBWeaponsProficiencies" Text="WeaponsProficiencies" Grid.Row="1" Grid.Column="1" Margin="5"/>
+            <Border BorderBrush="Black" Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="1" Margin="-0.5"/>
+
+            <TextBlock Text="Tools:" Grid.Row="2" Grid.Column="0" TextAlignment="Right" Margin="5" FontWeight="Bold"/>
+            <TextBlock x:Name="TBToolsProficiencies" Text="ToolsProficiencies" Grid.Row="2" Grid.Column="1" Margin="5"/>
+            <Border BorderBrush="Black" Grid.Row="2" Grid.ColumnSpan="2" BorderThickness="1" Margin="-0.5"/>
+
+            <TextBlock Text="Language:" Grid.Row="3" Grid.Column="0" TextAlignment="Right" Margin="5" FontWeight="Bold"/>
+            <TextBlock x:Name="TBLanguageProficiencies" Text="LanguageProficiencies" Grid.Row="3" Grid.Column="1" Margin="5"/>
+            <Border BorderBrush="Black" Grid.Row="3" Grid.ColumnSpan="2" BorderThickness="1" Margin="-0.5"/>-->
+        </Grid>
+
+        <Grid Name="Inventory" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Equipment &amp; Treasure" FontSize="16" TextAlignment="Center"/>
+            <TextBlock x:Name="TBInventory" Text="Inventory" Grid.Row="1" TextWrapping="Wrap" Margin="2"/>
+            <Border BorderBrush="Black" Grid.Row="1" BorderThickness="1" Margin="-0.5"/>
+            <Button Content="Add Item" Grid.Row="2" Margin="50,5,50,5"/>
+        </Grid>
+
+        <Grid Name="Notes" Grid.Row="1" Grid.RowSpan="2" Grid.Column="4" Grid.ColumnSpan="2" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Notes" Grid.Row="0" FontSize="24" TextAlignment="Center"/>
+            <TextBox x:Name="TBxNotes" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True"/>
+        </Grid>
+
+        <Grid Name="WindowButtons" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Content="Open DiceRoller"  Grid.Row="0"/>
+            <Button Content="Open Editor"  Grid.Row="1"/>
+        </Grid>
+
+    </Grid>
+</Window>
